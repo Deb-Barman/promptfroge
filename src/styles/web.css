@@ -1,0 +1,47 @@
+/* Web shell layer: Tailwind utilities for the React-owned surfaces. legacy.css owns the design tokens. */
+@tailwind base;       /* preflight is disabled in tailwind.config; this only emits the --tw-* defaults that translate/blur/shadow utilities need */
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { margin: 0; overflow: hidden; }
+
+/* ---- boot splash (removed once the view layer has initialised) ---- */
+#bootSplash {
+  position: fixed; inset: 0; z-index: 99999; display: grid; place-items: center;
+  background: var(--bg-1, #0b0d10); animation: pfSplashOut .35s ease 1.6s forwards;
+}
+#bootSplash .boot-mark {
+  width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+  font: 700 26px var(--font-mono, monospace); color: var(--accent-amber, #e8b04b);
+  background: var(--bg-3, #1a1e25); animation: pfPulse 1.1s ease-in-out infinite;
+}
+@keyframes pfPulse { 50% { transform: scale(.92); opacity: .7; } }
+@keyframes pfSplashOut { to { opacity: 0; visibility: hidden; } }
+
+/* ---- React dialog helpers (scoped to .pf-overlay so legacy views are untouched) ---- */
+.pf-overlay .btn-danger { background: var(--accent-red); border-color: var(--accent-red); color: #fff; }
+.pf-overlay .btn-danger:hover { filter: brightness(1.08); }
+.pf-overlay .btn:disabled { opacity: .5; pointer-events: none; }
+.pf-overlay .pf-input {
+  height: 32px; padding: 0 10px; border-radius: var(--r-md); border: 1px solid var(--border);
+  background: var(--bg-3); color: var(--text-primary); font: inherit; font-size: 13px;
+}
+.pf-overlay textarea.pf-input { height: auto; min-height: 32px; padding-top: 7px; padding-bottom: 7px; line-height: 1.5; resize: vertical; }
+.pf-overlay select.pf-input { padding-right: 6px; }
+.pf-overlay .pf-input:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 1px; }
+
+/* text selection + slim scrollbars */
+::selection { background: color-mix(in srgb, var(--accent-amber) 35%, transparent); }
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+@media (prefers-reduced-motion: reduce) { #bootSplash .boot-mark { animation: none; } }
+
+.pf-tab { background: transparent; border: 1px solid transparent; color: var(--text-secondary); padding: 6px 12px; border-radius: var(--r-md); font-size: 13px; cursor: pointer; }
+.pf-tab:hover { color: var(--text-primary); }
+.pf-tab.is-active { background: var(--bg-3); color: var(--text-primary); border-color: var(--border-subtle); }
+
+/* ---- accessibility ---- */
+.skip-link { position: fixed; left: 12px; top: -48px; z-index: 99998; padding: 8px 14px; border-radius: var(--r-md); background: var(--accent-amber); color: #111; font-weight: 600; text-decoration: none; transition: top .15s; }
+.skip-link:focus { top: 10px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+/* installed-app (standalone) window: respect notches / rounded corners */
+@media (display-mode: standalone) { body { padding-top: env(safe-area-inset-top); } }
