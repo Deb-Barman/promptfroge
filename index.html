@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Prompt Forge — local-first prompt IDE</title>
+    <meta name="description" content="Write, analyse, version and run prompts. Everything stays in your browser — no backend, no database, no account." />
+    <meta name="theme-color" content="#0b0d10" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Prompt Forge" />
+    <meta property="og:title" content="Prompt Forge" />
+    <meta property="og:description" content="A local-first prompt IDE. No backend, no account." />
+  </head>
+  <body data-theme="dark">
+    <div id="bootSplash" aria-hidden="true"><div class="boot-mark">P</div></div>
+    <noscript><p style="font:16px system-ui;padding:32px;color:#ccc;background:#0b0d10">Prompt Forge needs JavaScript. It runs entirely in your browser — nothing is sent to a server.</p></noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

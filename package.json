@@ -1,0 +1,46 @@
+{
+  "name": "promptforge-web",
+  "productName": "Prompt Forge",
+  "version": "2.0.0",
+  "description": "Prompt Forge \u2014 a local-first prompt IDE that runs entirely in your browser. No backend, no database, no account. Deploys to Vercel as a static site.",
+  "author": "Deb Barman",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --open",
+    "serve": "npm run build && vite preview --host --open",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "icons": "python3 scripts/make-icons.py",
+    "check": "npm run typecheck && npm test && vite build"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@monaco-editor/react": "^4.7.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.6.1",
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^30.1.2",
+    "monaco-editor": "^0.52.2",
+    "postcss": "^8.5.30",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vite-plugin-pwa": "^0.21.2",
+    "vitest": "^2.1.9",
+    "workbox-window": "^7.4.1",
+    "zustand": "^4.5.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
